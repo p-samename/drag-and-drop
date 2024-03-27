@@ -32,7 +32,6 @@ export default function Home() {
     e.target.style.top = "0px";
     e.target.style.left = "0px";
     e.target.style.opacity = 1;
-    e.target.style.border = "none";
   };
 
   const handleDragEnter = (e, idx) => {
