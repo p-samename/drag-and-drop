@@ -12,7 +12,7 @@ export default function Home() {
 
   const handleDrag = (e) => {
     setOnDrag(true);
-    e.target.style.opacity = onDrag ? 0.5 : 1;
+    e.target.style.opacity = 0;
   };
 
   const handleDragStart = (e, idx) => {
@@ -21,25 +21,29 @@ export default function Home() {
   };
 
   const handleEnd = (e) => {
+    e.preventDefault();
     const list = [...dndList];
     const dragItemConotent = list[dragItem.current];
     list.splice(dragItem.current, 1);
     list.splice(dragOverItem.current, 0, dragItemConotent);
+
     setDndList(list);
 
-    e.target.style.top = `${0}px`;
-    e.target.style.left = `${0}px`;
+    e.target.style.top = "0px";
+    e.target.style.left = "0px";
     e.target.style.opacity = 1;
+    e.target.style.border = "none";
   };
 
   const handleDragEnter = (e, idx) => {
+    e.preventDefault();
     dragOverItem.current = idx;
     console.log("drag-end ::::::::::: ", idx);
   };
 
   return (
     <main>
-      <div className="flex gap-[12px] justify-center">
+      <div className="flex gap-[12px] justify-center w-max mt-[120px] mx-auto p-[20px] border-[1px]">
         {dndList.map((v, idx) => {
           return (
             <div
@@ -49,9 +53,9 @@ export default function Home() {
               onDragEnd={handleEnd}
               onDragStart={(e) => handleDragStart(e, idx)}
               onDragEnter={(e) => handleDragEnter(e, idx)}
-              className="flex justify-center items-center bg-slate-500 w-[100px] h-[100px] transition-all rounded-[16px]"
+              className="cursor-move flex justify-center items-center bg-slate-500 w-[100px] h-[100px] transition-all rounded-[16px]"
             >
-              <p>{v}</p>
+              {v}
             </div>
           );
         })}
