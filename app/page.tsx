@@ -15,7 +15,7 @@ export default function Home() {
 
   const handleDragStart = (e: DragEvent<HTMLDivElement>, idx: number) => {
     dragItem.current = idx;
-    console.log("drag-start ::: ", idx, e);
+    console.log("drag-start :::: ", idx, e);
   };
 
   const handleEnd = (e: DragEvent<HTMLDivElement>) => {
@@ -36,7 +36,7 @@ export default function Home() {
   const handleDragEnter = (e: DragEvent<HTMLDivElement>, idx: number) => {
     e.preventDefault();
     dragOverItem.current = idx;
-    console.log("drag-end ::: ", idx);
+    console.log("drag-end :::: ", idx);
   };
 
   return (
